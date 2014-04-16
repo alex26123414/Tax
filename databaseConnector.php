@@ -10,32 +10,30 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-<?php
+        <?php
+        $username = "root";
+        $password = "";
+        $hostname = "localhost";
 
-    $username = "root";
-    $password = "";
-    $hostname = "localhost";
-    
 
-    //connection to the database
-    $dbhandle = mysql_connect($hostname, $username, $password)
-    or die("Unable to connect to MySQL");
-    echo "Connected to MySQL<br>";
+        //connection to the database
+        $dbhandle = mysql_connect($hostname, $username, $password)
+                or die("Unable to connect to MySQL");
+        echo "Connected to MySQL<br>";
 
-    //select a database to work with
-    $selected = mysql_select_db("skat",$dbhandle)
-    or die("Could not select examples");
+        //select a database to work with
+        $selected = mysql_select_db("skat", $dbhandle)
+                or die("Could not select examples");
 
-    //execute the SQL query and return records
-    $result = mysql_query("SELECT * FROM tax");
-    while($row = mysql_fetch_array($result)) {
-    echo $row['idtax'] . " " . $row['value'];
-    echo "<br>";
-  }
+        //execute the SQL query and return records
+        $result = mysql_query("SELECT * FROM tax");
+        while ($row = mysql_fetch_array($result)) {
+            echo "idtax: " . $row['idtax'] . " value: " . $row['value'];
+            echo "<br>";
+        }
 
-    //close the connection
-    mysql_close($dbhandle);
-
-?>
+        //close the connection
+        mysql_close($dbhandle);
+        ?>
     </body>
 </html>
