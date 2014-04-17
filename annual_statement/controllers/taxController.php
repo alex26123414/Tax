@@ -1,34 +1,34 @@
 <?php
 
-require_once('../mappers/annualStatementMapper.php');
-require_once('../models/annualStatementModel.php');
+require_once('../mappers/taxMapper.php');
+require_once('../models/taxModel.php');
 
-class annualStatementController {
+class taxController {
 
     public static function cache() {
 
-        // Cache all annualStatements on construct
-        self::getAllAnnualStatements();
+        // Cache all taxes on construct
+        self::getAllTaxes();
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
     // Cache
-    private static $annualStatements;
+    private static $taxes;
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
-    public static function getAnnualStatement($cpr) {
+    public static function getTax($idtax) {
 
-        // If all annualStatements are cached
-        if (isset(self::$annualStatements)) {
+        // If all taxes are cached
+        if (isset(self::$taxes)) {
 
-            // Return the specific annualStatements
-            return self::$annualStatements[$cpr];
+            // Return the specific tax
+            return self::$taxes[$idtax];
         } else {
 
             // Get the selected annualStatements from the database
-            $scenario = annualStatementMapper::select($cpr);
+            $scenario = taxMapper::select($idtax);
 
             // Return the results
             return $scenario;

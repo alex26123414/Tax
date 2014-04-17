@@ -1,9 +1,9 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="annualStatement.css">
 <?php
-require_once('../annual_statement/annualStatementMapper.php');
-require_once('../annual_statement/annualStatementModel.php');
-require_once('../annual_statement/annualStatementController.php');
+require_once('../annual_statement/mappers/annualStatementMapper.php');
+require_once('../annual_statement/models/annualStatementModel.php');
+require_once('../annual_statement/controllers/annualStatementController.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
