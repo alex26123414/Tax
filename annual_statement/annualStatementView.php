@@ -4,15 +4,38 @@
 require_once('../annual_statement/mappers/personMapper.php');
 require_once('../annual_statement/models/personModel.php');
 require_once('../annual_statement/controllers/personController.php');
+
 require_once('../annual_statement/mappers/incomeInfoMapper.php');
 require_once('../annual_statement/models/incomeInfoModel.php');
 require_once('../annual_statement/controllers/incomeInfoController.php');
+
+require_once('../annual_statement/mappers/taxMapper.php');
+require_once('../annual_statement/models/taxModel.php');
+require_once('../annual_statement/controllers/taxController.php');
+
+require_once('../annual_statement/mappers/incomeMapper.php');
+require_once('../annual_statement/models/incomeModel.php');
+require_once('../annual_statement/controllers/incomeController.php');
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+$taxes = taxController::getTax('1');
+foreach ($taxes as $taxModel){
+     echo "Value from database:" . $taxModel->getIdtax() . " ";
+    echo "Date from database:" . $taxModel->getValue() . " ";
+}
+
+$taxes = taxController::getTax('1');
+foreach ($taxes as $taxModel){
+     echo "Value from database:" . $taxModel->getIdtax() . " ";
+    echo "Date from database:" . $taxModel->getValue() . " ";
+}
 
 $incomeInfos = incomeInfoController::getIncomeInfo('1005891234');
 foreach ($incomeInfos as $incomeInfoModel){
@@ -100,10 +123,11 @@ foreach ($persons as $personModel) {
                 </div>
                 <div id="btns">
                     <button type="button" onclick="window.print();">Print</button>
-                    <button type="button" onclick="alert('Not implementet yet!')">Change</button>
+                    <button type="button" onclick="window.location.assign('annualStatementChange.php')">Change</button>
                 </div>
             </div>
         </div>
     </body>
 
 <?php } ?>
+    

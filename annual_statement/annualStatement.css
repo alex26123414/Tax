@@ -14,6 +14,7 @@ div{
 
 body{
     background-color: #ccc;
+    font-family: arial;
 }
 #main_wraper_content{
     width: 800px;
@@ -60,7 +61,8 @@ body{
 
 #info_header td, th{
     border-bottom: 1px solid black;
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
 }
 #info_header table{
     width: 100%;
@@ -88,6 +90,10 @@ body{
 }
 #income_results th{
     border-bottom: 1px solid black;
+}
+
+#add_income{
+    text-align: center;
 }
 
 #btns{

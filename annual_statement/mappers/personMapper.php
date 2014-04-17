@@ -12,7 +12,7 @@
             private static function create($line) {
 
                 // Create new object
-                $current = new personModel($line['cpr'], $line['first_name'], $line['last_name'], $line['address'], $line['e-mail'], $line['phone']);
+                $current = new personModel($line['cpr'], $line['first_name'], $line['last_name'], $line['address'], $line['e-mail'], $line['phone'], $line['partner_cpr']);
 
                 // Return object
                 return $current;

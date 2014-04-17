@@ -8,12 +8,11 @@ class personModel {
     private $address;
     private $email;
     private $phone;
-    
-
+    private $partner_cpr;
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
-    public function __construct($cpr, $first_name, $last_name, $address, $email, $phone) {
+    public function __construct($cpr, $first_name, $last_name, $address, $email, $phone, $partner_cpr) {
 
         $this->cpr = $cpr;
         $this->first_name = $first_name;
@@ -21,9 +20,8 @@ class personModel {
         $this->address = $address;
         $this->email = $email;
         $this->phone = $phone;
-
+        $this->partner_cpr;
     }
-    
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
@@ -85,8 +83,16 @@ class personModel {
             return false;
         }
     }
-    
-    
+
+    public function setPartner_cpr($partner_cpr) {
+        if (isset($partner_cpr) && is_numeric($partner_cpr) && $partner_cpr > 0) {
+            $this->partner_cpr = $partner_cpr;
+        } else {
+            return false;
+        }
+    }
+
+
     /* -------------------------------------------------------------------------------------------------------------- */
 
     public function getCpr() {
@@ -113,10 +119,14 @@ class personModel {
         return $this->phone;
     }
 
-       
     public function getName() {
         return $this->name;
     }
+    public function getPartner_cpr() {
+        return $this->partner_cpr;
+    }
+
 
 }
+
 ?>

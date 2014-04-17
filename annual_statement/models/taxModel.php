@@ -15,18 +15,15 @@ class taxModel {
 
     private $idtax;
     private $value;
+    private $includes_AM;
 
-    /**
-     * Constructor for the tax obj.
-     * @param type $idtax
-     * @param type $value
-     */
-    function __construct($idtax, $value) {
+    function __construct($idtax, $value, $includes_AM) {
         $this->idtax = $idtax;
         $this->value = $value;
+        $this->includes_AM = $includes_AM;
     }
 
-    /* ---------------------------------------------------------------------------------------- */
+        /* ---------------------------------------------------------------------------------------- */
     public function setIdtax($idtax) {
          if (isset($idtax) && is_numeric($idtax) && $idtax > 0) {
             $this->idtax = $idtax;
@@ -37,7 +34,12 @@ class taxModel {
     public function setValue($value) {
         $this->value = $value;
     }
+    
+    public function setIncludes_AM($includes_AM) {
+        $this->includes_AM = $includes_AM;
+    }
 
+    
     /* ---------------------------------------------------------------------------------------- */
     public function getIdtax() {
         return $this->idtax;
@@ -46,4 +48,9 @@ class taxModel {
     public function getValue() {
         return $this->value;
     }
+    
+    public function getIncludes_AM() {
+        return $this->includes_AM;
+    }
+
 }

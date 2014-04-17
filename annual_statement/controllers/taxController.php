@@ -1,7 +1,7 @@
 <?php
 
-require_once('../mappers/taxMapper.php');
-require_once('../models/taxModel.php');
+require_once('../annual_statement/mappers/taxMapper.php');
+require_once('../annual_statement/models/taxModel.php');
 
 class taxController {
 

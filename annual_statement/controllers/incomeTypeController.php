@@ -1,7 +1,7 @@
 <?php
 
-require_once('../mappers/incomeTypeMapper.php');
-require_once('../models/incomeTypeModel.php');
+require_once('../annual_statement/mappers/incomeTypeMapper.php');
+require_once('../annual_statement/models/incomeTypeModel.php');
 
 class incomeTypeController {
 
@@ -28,7 +28,7 @@ class incomeTypeController {
         } else {
 
             // Get the selected annualStatements from the database
-            $scenario = taxMapper::select($idincome_type);
+            $scenario = incomeTypeMapper::select($idincome_type);
 
             // Return the results
             return $scenario;

@@ -12,7 +12,7 @@
             private static function create($line) {
 
                 // Create new object
-                $current = new taxModel($line['idtax'], $line['value']);
+                $current = new taxModel($line['idtax'], $line['value'], $line['includes_AM']);
 
                 // Return object
                 return $current;
@@ -68,11 +68,12 @@
                 try {
 
                     // Prepare SQL statement
-                    $pstmt = $db->prepare("UPDATE tax SET idtax=:idtax, `value`=:val WHERE idtax=:idtax;");
+                    $pstmt = $db->prepare("UPDATE tax SET idtax=:idtax, `value`=:val, `includes_AM`=:includes_AM WHERE idtax=:idtax;");
 
                     // Bind SQL values
                     $pstmt->bindValue(':idtax', $tax->getIdtax(), PDO::PARAM_INT);
                     $pstmt->bindValue(':val', $tax->getValue(), PDO::PARAM_INT);
+                    $pstmt->bindValue(':includes_AM', $tax->getIncludes_AM(), PDO::PARAM_INT);
                     // Execute SQL query
                     $pstmt->execute();
 

@@ -1,7 +1,7 @@
 <?php
 
-require_once('../mappers/incomeMapper.php');
-require_once('../models/incomeModel.php');
+require_once('../annual_statement/mappers/incomeMapper.php');
+require_once('../annual_statement/models/incomeModel.php');
 
 class incomeController {
 
