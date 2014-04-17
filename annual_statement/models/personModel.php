@@ -1,6 +1,6 @@
 <?php
 
-class annualStatementModel {
+class personModel {
 
     private $cpr;
     private $first_name;
@@ -8,12 +8,8 @@ class annualStatementModel {
     private $address;
     private $email;
     private $phone;
-    private $date;
-    private $income_name;
-    private $income_value;
-    private $income_type_name;
-    private $income_type;
-    private $tax_value;
+    
+
 
     /* -------------------------------------------------------------------------------------------------------------- */
 
@@ -25,12 +21,7 @@ class annualStatementModel {
         $this->address = $address;
         $this->email = $email;
         $this->phone = $phone;
-//        $this->date = $date;
-//        $this->income_name = $income_name;
-//        $this->income_value = $income_value;
-//        $this->income_type_name = $income_type_name;
-//        $this->income_type = $income_type;
-//        $this->tax_value = $tax_value;
+
     }
     
 
@@ -95,65 +86,7 @@ class annualStatementModel {
         }
     }
     
-    public function setDate($date) {
-
-        if (!empty($date)) {
-            $this->date = $date;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setIncome_name($income_name) {
-
-        if (!empty($income_name)) {
-            $this->income_name = $income_name;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setIncome_value($income_value) {
-
-        if (!empty($income_value)) {
-            $this->income_value = $income_value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setIncome_type($income_type) {
-
-        if (!empty($income_type)) {
-            $this->income_type = $income_type;
-            return true;
-        } else {
-            return false;
-        }
-    }
     
-    public function setIncome_type_name($income_type_name) {
-
-        if (!empty($income_type_name)) {
-            $this->income_type_name = $income_type_name;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setTax_value($tax_value) {
-
-        if (!empty($tax_value)) {
-            $this->tax_value = $tax_value;
-            return true;
-        } else {
-            return false;
-        }
-    }
     /* -------------------------------------------------------------------------------------------------------------- */
 
     public function getCpr() {
@@ -180,29 +113,10 @@ class annualStatementModel {
         return $this->phone;
     }
 
-    public function getDhone() {
-        return $this->date;
-    }
-    
+       
     public function getName() {
         return $this->name;
     }
 
-    public function getValue() {
-        return $this->value;
-    }
-
-    public function getIncome_type() {
-        return $this->income_type;
-    }
-
-    public function getIncome_type_name() {
-        return $this->income_type_name;
-    }
-    
-    public function getTax_value() {
-        return $this->tax_value;
-    }
 }
-
 ?>

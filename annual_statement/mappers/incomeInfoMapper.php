@@ -7,12 +7,12 @@
         <?php
         require_once('..//databaseConnector.php');
 
-        class annualStatementMapper {
+        class incomeInfoMapper {
 
             private static function create($line) {
 
                 // Create new object
-                $current = new annualStatementModel($line['cpr'], $line['first_name'], $line['last_name'], $line['address'], $line['e-mail'], $line['phone']);
+                $current = new incomeInfoModel($line['idincome_info'], $line['cpr'], $line['idincome'], $line['value'], $line['date']);
 
                 // Return object
                 return $current;
@@ -29,7 +29,7 @@
                 try {
 
                     // Prepare SQL statement
-                    $pstmt = $db->prepare("SELECT * FROM person WHERE cpr=:cpr;");
+                    $pstmt = $db->prepare("SELECT * FROM income_info WHERE cpr=:cpr;");
 
                     // Bind SQL values
                     $pstmt->bindValue(':cpr', $cpr, PDO::PARAM_INT);
@@ -57,7 +57,7 @@
 
             /* -------------------------------------------------------------------------------------------------------------- */
 
-            public static function updateDetails($annualStatement) {
+            public static function updateDetails($income_infos) {
 
                 // Get database connection
                 $db = Database::getConnection();
@@ -68,32 +68,27 @@
                 try {
 
                     // Prepare SQL statement
-                    $pstmt = $db->prepare("UPDATE tax SET cpr=:cpr, first_name=:first_name, last_name=:last_name, address=:address, email=:email, phone=:phone, date=:date, income_name=:income_name, income_value=:income_value, income_type_name=:income_type_name, income_type=:income_type, tax_value=:tax_value WHERE cpr=:cpr;");
+                    $pstmt = $db->prepare("UPDATE tax SET cpr=:cpr, first_name=:first_name, last_name=:last_name, address=:address, email=:email, phone=:phone WHERE cpr=:cpr;");
 
                     // Bind SQL values
-                    $pstmt->bindValue(':cpr', $annualStatement->getCpr(), PDO::PARAM_INT);
-                    $pstmt->bindValue(':first_name', $annualStatement->first_name(), PDO::PARAM_INT);
-                    $pstmt->bindValue(':last_name', $annualStatement->last_name(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':address', $annualStatement->getAddress(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':email', $annualStatement->getEmail(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':phone', $annualStatement->getphone(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':date', $annualStatement->getDate(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':income_name', $annualStatement->getEmail(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':income_value', $annualStatement->getEmail(), PDO::PARAM_INT);
-                    $pstmt->bindValue(':income_type_name', $annualStatement->getIncome_type_name(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':income_type', $annualStatement->getIncome_type(), PDO::PARAM_STR);
-                    $pstmt->bindValue(':tax_value', $annualStatement->getTax_value(), PDO::PARAM_INT);
+                    $pstmt->bindValue(':cpr', $person->getCpr(), PDO::PARAM_INT);
+                    $pstmt->bindValue(':first_name', $person->first_name(), PDO::PARAM_INT);
+                    $pstmt->bindValue(':last_name', $person->last_name(), PDO::PARAM_STR);
+                    $pstmt->bindValue(':address', $person->getAddress(), PDO::PARAM_STR);
+                    $pstmt->bindValue(':email', $person->getEmail(), PDO::PARAM_STR);
+                    $pstmt->bindValue(':phone', $person->getphone(), PDO::PARAM_STR);
+
                     // Execute SQL query
                     $pstmt->execute();
 
 
 
                     // Update the current session
-                    if ($_SESSION['annualStatement']->getCpr() == $annualStatement->getCpr()) {
-                        $_SESSION['annualStatement'] = $annualStatement;
+                    if ($_SESSION['person']->getCpr() == $person->getCpr()) {
+                        $_SESSION['person'] = $annualStatement;
                     }
                 } catch (PDOException $e) {
-                    echo ''.$e;
+                    echo '' . $e;
                 }
             }
 
