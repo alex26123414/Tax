@@ -1,21 +1,32 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="annualStatement.css">
 <?php
-require_once('../annual_statement/annualStatementMapper.php');
-require_once('../annual_statement/annualStatementModel.php');
-require_once('../annual_statement/annualStatementController.php');
+require_once('../annual_statement/mappers/personMapper.php');
+require_once('../annual_statement/models/personModel.php');
+require_once('../annual_statement/controllers/personController.php');
+require_once('../annual_statement/mappers/incomeInfoMapper.php');
+require_once('../annual_statement/models/incomeInfoModel.php');
+require_once('../annual_statement/controllers/incomeInfoController.php');
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-$annualStatements = annualStatementController::getAnnualStatement('1005891234'); //get this from the auth
+$incomeInfos = incomeInfoController::getIncomeInfo('1005891234');
+foreach ($incomeInfos as $incomeInfoModel){
+    
+    echo "Value from database:" . $incomeInfoModel->getValue() . " ";
+    echo "Date from database:" . $incomeInfoModel->getDate() . " ";
+}
 
-foreach ($annualStatements as $annualStatementModel) {
+$persons = personController::getPerson('1005891234'); //get this from the auth
 
-    echo "Cpr from database:" . $annualStatementModel->getCpr() . " ";
-    echo "Firstname from database:" . $annualStatementModel->getFirst_name() . " ";
+foreach ($persons as $personModel) {
+
+    echo "Cpr from database:" . $personModel->getCpr() . " ";
+    echo "Firstname from database:" . $personModel->getFirst_name() . " ";
     ?>
 
     <body>
@@ -25,8 +36,8 @@ foreach ($annualStatements as $annualStatementModel) {
                     <div id="logo"><img src="../img/tax_bw.png"/></div>
                     <div  id="year">2013</div>
                     <div id="person"> 
-                        <?php echo $annualStatementModel->getFirst_name() . ' ' . $annualStatementModel->getLast_name(); ?> <br/>
-                        <?php echo $annualStatementModel->getAddress(); ?>
+                        <?php echo $personModel->getFirst_name() . ' ' . $personModel->getLast_name(); ?> <br/>
+                        <?php echo $personModel->getAddress(); ?>
                     </div>
                 </div>
                 <div id="info_header">
