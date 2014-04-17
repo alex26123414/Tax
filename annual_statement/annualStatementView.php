@@ -1,10 +1,23 @@
 <meta charset="utf-8">
 <?php
+require_once('../annual_statement/annualStatementMapper.php');
+require_once('../annual_statement/annualStatementModel.php');
+require_once('../annual_statement/annualStatementController.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+$annualStatements = annualStatementController::getAnnualStatement('1005891234');
+
+    foreach($annualStatements as $annualStatementModel) {
+				
+	echo "Cpr from database:" .$annualStatementModel->getCpr()." ";
+        echo "Firstname from database:" .$annualStatementModel->getFirst_name()." ";
+
+}
+
 ?>
 
 <div id="header">
