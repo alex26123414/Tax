@@ -7,10 +7,95 @@ and open the template in the editor.
     Created on : Apr 15, 2014, 7:58:33 PM
     Author     : alex
 */
-
-#header{
-    
+/* this is just for test*/
+div{
+    /* border: 1px solid black;*/
 }
-#logo{
+
+body{
+    background-color: #ccc;
+}
+#main_wraper_content{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 10px 10px 5px #888888;
+}
+#header{
+    display: table;
+    margin-left: 10px;
+    margin-right:  10px;
+}
+#left_header{
+    float: left;
+    width: 50%;
+}
+#logo img{
     width: 150px;
+    display: inline;
+    float: left;
+}
+
+#year{
+    font-family: arial;
+    font-size: 100px;
+    font-weight: bolder;
+    color: #ccc;
+    display: inline;
+    float: left;
+}
+
+#person{
+    font-family: monospace;
+    float: left;
+    display: block;
+}
+
+#info_header{
+    float: right;
+    width: 50%;
+}
+
+#info_header td, th{
+    border-bottom: 1px solid black;
+    font-size: 12px;
+}
+#info_header table{
+    width: 100%;
+}
+#info_header th{
+    font-size: 25px;
+    text-align: left;
+}
+
+#main{
+    display: table;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right:  10px;
+}
+
+#main div{
+    margin-top: 25px;
+    border-bottom: 1px solid black;
+}
+
+#income_results{
+    width: 100%;
+    text-align: right;
+}
+#income_results th{
+    border-bottom: 1px solid black;
+}
+
+#btns{
+    text-align: center;
+    border: none !important;
+}
+
+@font-face{
+    font-family: alien;
+    src: url(../fonts/alienleaguegradbold.ttf);
 }
