@@ -101,7 +101,7 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                         </tr>
                         <?php
                         $incomeInfos = incomeInfoController::getIncomeInfo($cpr);
-                        echo print_r($incomeInfos);
+                        $income_type_name_old = "";
                         foreach ($incomeInfos as $incomeInfoModel) {
                             $idincome = $incomeInfoModel->getIdincome();
                             $value = $incomeInfoModel->getValue();
@@ -109,7 +109,7 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                             $idincome_type;
                             $idtax;
                             $tax_value;
-                            $income_type_name_old = "";
+                            
 
                             $incomes = incomeController::getIncome($idincome);
                             foreach ($incomes as $incomeModel) {
@@ -122,18 +122,20 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                                     $income_type_name = $incomeTypeModel->getName();
                                 }
                                 //if income type new show income type
-                                if ($income_type_name != $income_type_name_old) {
-                                    echo '<tr><td colspan="5" style="text-align:left;"><b>' . $income_type_name . '</b></td></tr>';
+                                //echo 'act = |'.$income_type_name.'| old = |'.$income_type_name_old.'| <br>';
+                                if (strcmp($income_type_name_old, $income_type_name) != 0) {
+                                    echo '<tr><td colspan="5" style="text-align:left; font-size: 10px; font-weight: bolder;">' . $income_type_name . '</td></tr>';
                                     $income_type_name_old = $income_type_name;
+                                    //echo 'here is income name old '.$income_type_name_old;
                                 }
                             }
                             ?>
-                            <tr>
-                                <td><?php echo $incomeName; ?></td>
-                                <td><?php echo $idincome; ?></td>
-                                <td><?php echo $value; ?> <input type="text" placeholder="<?php echo $value; ?>" style='text-align: right;'></td>
-                                <td><?php echo $value * 0.08; ?></td>
-                                <td><?php echo $value * 0.92; ?></td>
+                        <tr style="font-family: serif;">
+                                <td style="text-align: left;"><?php echo $incomeName; ?></td>
+                                <td style="border-bottom: 1px solid black;"><?php echo $idincome; ?></td>
+                                <td><?php echo number_format($value, 0, '.', '. '); ?> <input type="text" placeholder="<?php echo $value; ?>" style='text-align: right;'></td>
+                                <td><?php echo number_format($value * 0.08, 0, '.', '. '); ?></td>
+                                <td><?php echo number_format($value * 0.92, 0, '.', '. '); ?></td>
                             </tr>
                         <?php } ?>
                         <tr>
