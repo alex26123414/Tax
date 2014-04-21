@@ -1,4 +1,8 @@
 <?php
+/*
+ * Why not just make an auto-loader?
+ * why no views?
+ */
 require_once('../annual_statement/mappers/personMapper.php');
 require_once('../annual_statement/models/personModel.php');
 require_once('../annual_statement/controllers/personController.php');
@@ -109,7 +113,7 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                             $idincome_type;
                             $idtax;
                             $tax_value;
-                            
+
 
                             $incomes = incomeController::getIncome($idincome);
                             foreach ($incomes as $incomeModel) {
@@ -130,7 +134,7 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                                 }
                             }
                             ?>
-                        <tr style="font-family: serif;">
+                            <tr style="font-family: serif;">
                                 <td style="text-align: left;"><?php echo $incomeName; ?></td>
                                 <td style="border-bottom: 1px solid black;"><?php echo $idincome; ?></td>
                                 <td><?php echo number_format($value, 0, '.', '. '); ?> <input type="text" placeholder="<?php echo $value; ?>" style='text-align: right;'></td>
@@ -154,20 +158,19 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
 
 
 <script>
-    function addIncome()
-    {
-        var table = document.getElementById("income_results");
-        var row = table.insertRow(table.rows.length - 1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-
-        cell1.innerHTML = "Name";
-        cell2.innerHTML = "Section";
-        cell3.innerHTML = "Section";
-        cell4.innerHTML = "Section";
-        cell5.innerHTML = "Section";
-    }
+            function addIncome()
+            {
+            var table = document.getElementById("income_results");
+                    var row = table.insertRow(table.rows.length - 1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell1.innerHTML = '<select>  <option value="volvo">Volvo</option>  <option value="saab">Saab</option>  <option value="mercedes">Mercedes</option>  <option value="audi">Audi</option></select>';
+                    cell2.innerHTML = "Section";
+                    cell3.innerHTML = "Section";
+                    cell4.innerHTML = "Section";
+                    cell5.innerHTML = "Section";
+            }
 </script>
