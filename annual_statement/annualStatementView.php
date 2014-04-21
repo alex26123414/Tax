@@ -31,19 +31,17 @@ foreach ($taxes as $taxModel){
     echo "Date from database:" . $taxModel->getValue() . " ";
 }
 
-$taxes = taxController::getTax('1');
-foreach ($taxes as $taxModel){
-     echo "Value from database:" . $taxModel->getIdtax() . " ";
-    echo "Date from database:" . $taxModel->getValue() . " ";
-}
+
 
 $incomeInfos = incomeInfoController::getIncomeInfo('1005891234');
-foreach ($incomeInfos as $incomeInfoModel){
+// echo print_r($incomeInfos);
+foreach ($incomeInfos as $incomeInfoModel) {
+    echo ''. $incomeInfoModel->getIdincome() ." IDINCOME ";
+    echo ''. $incomeInfoModel->getValue() ."VALUE ";
     
-    echo "Value from database:" . $incomeInfoModel->getValue() . " ";
-    echo "Date from database:" . $incomeInfoModel->getDate() . " ";
-}
 
+    
+}
 $persons = personController::getPerson('1005891234'); //get this from the auth
 
 foreach ($persons as $personModel) {

@@ -49,7 +49,7 @@
                         $array[$line['idtax']] = self::create($line);
                     }
                 } catch (PDOException $e) {
-                    
+                    echo ''.$e;
                 }
 
                 return $array;

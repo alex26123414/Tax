@@ -72,7 +72,7 @@
 
                     // Bind SQL values
                     $pstmt->bindValue(':cpr', $person->getCpr(), PDO::PARAM_INT);
-                    $pstmt->bindValue(':first_name', $person->first_name(), PDO::PARAM_INT);
+                    $pstmt->bindValue(':first_name', $person->first_name(), PDO::PARAM_STR);
                     $pstmt->bindValue(':last_name', $person->last_name(), PDO::PARAM_STR);
                     $pstmt->bindValue(':address', $person->getAddress(), PDO::PARAM_STR);
                     $pstmt->bindValue(':email', $person->getEmail(), PDO::PARAM_STR);

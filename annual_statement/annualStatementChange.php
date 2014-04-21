@@ -101,7 +101,7 @@ require_once('../annual_statement/controllers/incomeTypeController.php');
                         </tr>
                         <?php
                         $incomeInfos = incomeInfoController::getIncomeInfo($cpr);
-                        echo print_r($incomeInfos);
+                       // echo print_r($incomeInfos);
                         foreach ($incomeInfos as $incomeInfoModel) {
                             $idincome = $incomeInfoModel->getIdincome();
                             $value = $incomeInfoModel->getValue();
