@@ -46,7 +46,7 @@
                     foreach ($pstmt as $line) {
 
                         // Add current object to array
-                        $array[$line['cpr']] = self::create($line);
+                        $array[$line['idincome_info']] = self::create($line);
                     }
                 } catch (PDOException $e) {
                     
