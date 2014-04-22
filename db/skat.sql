@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2014 at 10:26 PM
+-- Generation Time: Apr 22, 2014 at 08:30 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `income` (
   PRIMARY KEY (`idincome`),
   KEY `income_income_type_idx` (`idincome_type`),
   KEY `income_tax_idx` (`idtax`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1000 ;
 
 --
 -- Dumping data for table `income`
@@ -43,7 +43,10 @@ CREATE TABLE IF NOT EXISTS `income` (
 INSERT INTO `income` (`idincome`, `name`, `idincome_type`, `idtax`) VALUES
 (11, 'Lønindkomst', 1, 1),
 (16, 'Pensioner, dagpenge, stipendier mv.', 1, 2),
-(31, 'Renteind. pengeinst., obl. og pantebreve mm.', 2, 2);
+(31, 'Renteind. pengeinst., obl. og pantebreve mm.', 2, 2),
+(42, 'Renteudgifter pengeinstitut', 2, 2),
+(51, 'Befordring', 3, 3),
+(999, 'Forskudsskat', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -60,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `income_info` (
   PRIMARY KEY (`idincome_info`),
   KEY `income_info_person_idx` (`cpr`),
   KEY `income_info_income_idx` (`idincome`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `income_info`
@@ -69,7 +72,12 @@ CREATE TABLE IF NOT EXISTS `income_info` (
 INSERT INTO `income_info` (`idincome_info`, `cpr`, `idincome`, `value`, `date`) VALUES
 (1, 1005891234, 11, 104270, '2014-04-17 19:55:46'),
 (2, 1005891234, 16, 69036, '2014-04-17 19:57:14'),
-(3, 1005891234, 31, 64, '2014-04-17 19:57:14');
+(3, 1005891234, 31, 64, '2014-04-17 19:57:14'),
+(4, 1005891234, 999, 59301, '2014-04-22 17:45:19'),
+(5, 1603861953, 11, 31158, '2014-04-22 18:25:20'),
+(6, 1603861953, 16, 69036, '2014-04-22 18:25:20'),
+(7, 1603861953, 31, 10, '2014-04-22 18:25:44'),
+(8, 1603861953, 999, 36879, '2014-04-22 18:28:06');
 
 -- --------------------------------------------------------
 
@@ -81,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `income_type` (
   `idincome_type` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idincome_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `income_type`
@@ -89,7 +97,9 @@ CREATE TABLE IF NOT EXISTS `income_type` (
 
 INSERT INTO `income_type` (`idincome_type`, `name`) VALUES
 (1, 'Personlig indkomst'),
-(2, 'Kapitalindkomst');
+(2, 'Kapitalindkomst'),
+(3, 'Ligningsmæssige fradrag'),
+(4, 'Skatteberegning og skatteopgørelse');
 
 -- --------------------------------------------------------
 
@@ -104,7 +114,6 @@ CREATE TABLE IF NOT EXISTS `person` (
   `address` varchar(255) NOT NULL,
   `e-mail` varchar(255) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
   `partner_cpr` int(11) DEFAULT NULL,
   PRIMARY KEY (`cpr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -113,8 +122,10 @@ CREATE TABLE IF NOT EXISTS `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`cpr`, `first_name`, `last_name`, `address`, `e-mail`, `phone`, `password`, `partner_cpr`) VALUES
-(1005891234, 'Alex', 'Gheorghiasa', 'Sigvald Gade 6, 2. tv, 2450 Kbh SV', 'alex26123414@gmail.com', '26123414', '1234', NULL);
+INSERT INTO `person` (`cpr`, `first_name`, `last_name`, `address`, `e-mail`, `phone`, `partner_cpr`) VALUES
+(131313, '', '', '', '', NULL, NULL),
+(1005891234, 'Alex', 'Gheorghiasa', 'Sigvald Gade 6, 2. tv, 2450 Kbh SV', 'alex26123414@gmail.com', '26123414', NULL),
+(1603861953, 'Sabri', 'Moussi', 'Skovduestien 16 ST, TV 2400 Kbh Nv', 'sabrikmoussi@gmail.com', '21512136', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `tax` (
   `value` double DEFAULT NULL,
   `includes_AM` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idtax`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tax`
@@ -135,7 +146,8 @@ CREATE TABLE IF NOT EXISTS `tax` (
 
 INSERT INTO `tax` (`idtax`, `value`, `includes_AM`) VALUES
 (1, 0.36, 1),
-(2, 0.36, 0);
+(2, 0.36, 0),
+(3, 0, 0);
 
 --
 -- Constraints for dumped tables

@@ -8,7 +8,7 @@ require_once ('./autoLoader.php');
 
 <body>
     <?php
-    $persons = personController::getPerson('1005891234'); //get this from the auth
+    $persons = personController::getPerson('1603861953'); //get this from the auth
     $incomesAll = incomeController::getAllIncome();
     foreach ($persons as $personModel) {
         $cpr = $personModel->getCpr();
