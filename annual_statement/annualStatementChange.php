@@ -59,7 +59,7 @@ require_once ('./autoLoader.php');
             </div>
 
             <div id="main">
-                <div id="result">Du skal have penge tilbage 17.747 kr</div>
+                <div id="result">We can not show the result now.</div>
                 <div id="tax-info">
                     <?php include_once ('./infoFromTax.php'); ?>
                 </div>
