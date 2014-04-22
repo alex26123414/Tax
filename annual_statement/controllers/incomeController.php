@@ -6,12 +6,16 @@ require_once('../annual_statement/models/incomeModel.php');
 class incomeController {
 
     public static function getIncome($idincome) {
-
-
         // Get the selected annualStatements from the database
         $scenario = incomeMapper::select($idincome);
 
         // Return the results
+        return $scenario;
+    }
+    
+    public static function getAllIncome() {
+        // Get the selected annualStatements from the database
+        $scenario = incomeMapper::selectAll();
         return $scenario;
     }
 

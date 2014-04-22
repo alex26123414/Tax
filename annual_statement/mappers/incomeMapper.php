@@ -54,6 +54,35 @@
 
                 return $array;
             }
+            
+            public static function selectAll() {
+
+                // Get database connection
+                $db = databaseConnector::getConnection();
+
+                // Create a new scenario
+
+                try {
+                    // Prepare SQL statement
+                    $pstmt = $db->prepare("SELECT * FROM income;");
+                    // Execute SQL query
+                    $pstmt->execute();
+
+                    $array = array();
+                    // Fetch all results
+                    $pstmt = $pstmt->fetchAll();
+                    // Loop all results as lines
+                    foreach ($pstmt as $line) {
+
+                        // Add current object to array
+                        $array[$line['idincome']] = self::create($line);
+                    }
+                } catch (PDOException $e) {
+                    
+                }
+
+                return $array;
+            }
 
             /* -------------------------------------------------------------------------------------------------------------- */
 
